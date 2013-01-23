@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
       @searchParams = Searchparameter.new
       tmp = params[:searchparameter]
+
     respond_to do |format|
         format.html do
           if request.xhr?
