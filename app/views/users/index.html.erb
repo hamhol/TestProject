@@ -1,6 +1,5 @@
 <%= content_for :initJS do %>
     $("#searchform").bind("ajax:success",function(evt, data, status, xhr) {
-    alert("success" + xhr.responseText);
     var updTargetId = $(this).attr("data-updateTargetId");
     updTargetId = "#"+ updTargetId;
     $(updTargetId).html(xhr.responseText);

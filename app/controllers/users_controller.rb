@@ -2,14 +2,15 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-
+      @users = User.all
       @searchParams = Searchparameter.new
-      tmp = params[:searchparameter]
 
     respond_to do |format|
         format.html do
           if request.xhr?
+            tmp = params[:searchparameter]
+            @users = User.where("(name = :name OR :name='') AND (email=:email or :email='')",tmp)
+
             #@searchParams = Searchparameter.new(params[:searchparameter])
             render :partial => "results"
           end
