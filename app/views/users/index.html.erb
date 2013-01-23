@@ -1,0 +1,33 @@
+<%= content_for :initJS do %>
+    $("#searchform").bind("ajax:success",function(evt, data, status, xhr) {
+    alert("success" + xhr.responseText);
+    var updTargetId = $(this).attr("data-updateTargetId");
+    updTargetId = "#"+ updTargetId;
+    $(updTargetId).html(xhr.responseText);
+    });
+<% end %>
+
+<h1 xmlns="http://www.w3.org/1999/html">Listing users</h1>
+
+<div id="search">
+   <%=  form_for @searchParams, :url=>"users", :remote=>true, :method=>"GET", :'data-type'=>"html", :html=> {:id=>"searchform", :'data-updateTargetId' => "results"} do |f| %>
+  <div class="field">
+        <%= f.label :name %></br>
+        <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %></br>
+    <%= f.text_field :email %>
+  </div>
+    <%= f.submit "Suchen" %>
+  <% end %>
+</div>
+
+
+<div id="results">
+  <%=  render "results" %>
+</div>
+
+<br />
+
+<%= link_to 'New User', new_user_path %>
