@@ -5,7 +5,8 @@ class UsersController < ApplicationController
     @users = User.all
 
       @searchParams = Searchparameter.new
-      respond_to do |format|
+      tmp = params[:searchparameter]
+    respond_to do |format|
         format.html do
           if request.xhr?
             #@searchParams = Searchparameter.new(params[:searchparameter])
