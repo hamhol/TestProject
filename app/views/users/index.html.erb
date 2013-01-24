@@ -3,9 +3,28 @@
     var updTargetId = $(this).attr("data-updateTargetId");
     updTargetId = "#"+ updTargetId;
     $(updTargetId).html(xhr.responseText);
+    initDatatable();
     });
-<% end %>
+    initDatatable();
 
+<% end %>
+<script>
+  function initDatatable() {
+      $("#results > table").dataTable({
+          "aoColumnDefs": [
+              { "bSortable": false, "aTargets": [ 4 ] }
+          ], "sDom": 'CRlfrtip',
+          "bStateSave": true,
+          "bScrollInfinite": true,
+          "bScrollCollapse": true,
+          "sScrollY": "200px",
+          "oColVis": {
+              "buttonText": "Change columns"
+          }
+
+      });
+  }
+</script>
 <h1 xmlns="http://www.w3.org/1999/html">Listing users</h1>
 
 <div id="search">
@@ -17,6 +36,7 @@
   <div class="field">
     <%= f.label :email %></br>
     <%= f.text_field :email %>
+    <div id="spinner"></div>
   </div>
     <%= f.submit "Suchen" %>
   <% end %>

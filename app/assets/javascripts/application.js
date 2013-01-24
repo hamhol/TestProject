@@ -13,3 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require jquery.ui.all
+//= require dataTables/jquery.dataTables
+//= require dataTables/extras/ColReorder
+//= require dataTables/extras/ColVis
+
+
+

@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+(1..1000).each do |n|
+  strN = "%04d" % n
+  puts strN
+  gebday = Date.new(1960,1,1) +  n
+  User.create(name: "name#{strN}", email:"user#{strN}@test.de", birthday: gebday, numlogin:n)
+end
